@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.jooheon.simpleplayback"
-    compileSdk = 34
+    compileSdk = libs.versions.android.sdk.compile.get().toInt()
 
     defaultConfig {
         applicationId = "com.jooheon.simpleplayback"
-        minSdk = 26
-        targetSdk = 34
+        minSdk = libs.versions.android.sdk.min.get().toInt()
+        targetSdk = libs.versions.android.sdk.compile.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -41,17 +41,17 @@ android {
 }
 
 dependencies {
-    implementation(project(":screen"))
+    implementation(project( ":screen"))
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.material)
 
     // hilt
-    implementation("com.google.dagger:hilt-android:2.48.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.48.1")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation(libs.junit4)
+    androidTestImplementation(libs.androidx.test.ext)
+    androidTestImplementation(libs.androidx.test.espresso.core)
 }
